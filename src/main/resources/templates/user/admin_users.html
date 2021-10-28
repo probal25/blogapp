@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>All User</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div lang="en" th:include="fragments/navigation :: navigation"></div>
+<div class="container container-fluid">
+    <h1>Users Table</h1>
+    <div class="row col-md-7 table-responsive">
+        <table id="userTable" class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Username</th>
+                <th>Role</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user, rowStat: ${all_user}" th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+                <td th:text="${user.username}">username</td>
+                <td>ADMIN</td>
+                <td th:if="${user.enabled}">Approved</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
+

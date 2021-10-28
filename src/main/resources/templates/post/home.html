@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Welcome to Blog</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div lang="en" th:include="fragments/navigation :: navigation"></div>
+<div class="container container-fluid">
+    <h3>Blog Page</h3>
+    <div th:each="post: ${all_post}">
+        <div class="jumbotron" style="margin:0 auto;">
+
+            <h1 th:text="${post.title}">Title</h1>
+            <i><div><a th:text="'Author : '+${post.user.username}">Author</a></div></i>
+            <i><div th:text="'Created at: ' + ${#dates.format(post.createDate, 'dd-MMM-yyyy')}">Created by</div></i>
+            <p th:text="${#strings.abbreviate(post.body,400)} ">Body</p>
+        </div>
+        <div>
+            <a th:href="@{/post/view_post/{post_id}(post_id=${post.id})}">View full post</a>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

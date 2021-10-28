@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Non Approved Posts</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div lang="en" th:include="fragments/navigation :: navigation"></div>
+<div class="container container-fluid">
+    <h1>Non Approved Posts</h1>
+    <div class="row col-md-7 table-responsive">
+        <table id="userTable" class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Author</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Approval Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="post, rowStat: ${all_post}" th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+                <td th:text="${post.user.username}">Author</td>
+                <td th:text="${post.title}">Title</td>
+                <td th:text="${post.body}">Content</td>
+                <td>
+                    <a th:href="@{/post/approve_post/{id}(id=${post.id})}">Approve</a>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

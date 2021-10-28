@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>All User</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+
+<div class="container">
+
+    <h1 th:if="${errorMessage}" th:utext="${errorMessage}">Internal server error</h1>
+    <h1 th:if="!${errorMessage}">404 - Page does not exist</h1>
+    <div sec:authorize="isAuthenticated()"><a th:href="@{/home}">Back to Home Page</a></div>
+    <div sec:authorize="isAnonymous()"><a th:href="@{/login}">Please login</a></div>
+
+</div>
+</body>
+</html>

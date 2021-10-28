@@ -1,0 +1,28 @@
+
+<div th:fragment="navigation">
+    <nav th:fragment="navbar" class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/home}">Home</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li sec:authorize="hasRole('ROLE_ADMIN')"><a class="nav-link" th:href="@{/users/admin_users}">Admin Users</a></li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')"><a class="nav-link" th:href="@{/users/blogger_users}">Blogger Users</a></li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')"><a class="nav-link" th:href="@{/users/create_admin_user}">Create Admin Account</a></li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')"><a class="nav-link" th:href="@{/users/user_approval}">User Appoval</a></li>
+                <li><a class="nav-link" th:href="@{/post/new_post}">Create Post</a></li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')"><a class="nav-link" th:href="@{/post/all_posts}">All Posts</a></li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')"><a class="nav-link" th:href="@{/post/all_non_approved_posts}">Post Approval</a></li>
+                <li><a class="nav-link" th:href="@{/post/my_posts}">My Posts</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/logout" th:href="@{/logout}">
+                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Log out
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
